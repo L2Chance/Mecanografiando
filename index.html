@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mecanografiando</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="contenedor-juego">
+      <img
+        class="imagen-logo"
+        src="assets/LogoMecanografiando.png"
+        alt="Logo"
+      />
+      <div class="juego">
+        <div class="mostrar-palabras" id="mostrarPalabras"></div>
+        <div class="entrada-info">
+          <input
+            type="text"
+            id="campoEntrada"
+            placeholder="Escribí aquí..."
+            autocomplete="off"
+            autofocus
+          />
+          <div class="info">
+            <span id="temporizador">Tiempo: 60s</span>
+            <span id="puntuacion">Puntos: 0</span>
+          </div>
+        </div>
+      </div>
+      <button id="botonReiniciar">Reiniciar</button>
+      <div class="resultado-juego" id="resultadoJuego" style="display: none">
+        <h2>¡Tiempo terminado!</h2>
+        <p>Puntuación: <span id="resultadoPuntos">0</span></p>
+        <p>Errores: <span id="resultadoErrores">0</span></p>
+        <p>Total intentadas: <span id="resultadoTotal">0</span></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
