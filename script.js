@@ -12,9 +12,6 @@ const listaPalabras = [
   "pantalla",
   "ratón",
   "programa",
-  "javascript",
-  "html",
-  "css",
   "nube",
   "montaña",
   "sol",
@@ -149,6 +146,8 @@ const listaPalabras = [
   "marrón",
   "plata",
   "oro",
+  "estudiante",
+  "foto",
 ];
 
 const mostrarPalabras = document.getElementById("mostrarPalabras");
@@ -178,17 +177,19 @@ function resetearJuego() {
   tiempoRestante = 60;
   campoEntrada.disabled = false;
   campoEntrada.value = "";
-  campoEntrada.focus();
   puntuacion.textContent = "Puntos: 0";
   temporizador.textContent = "Tiempo: 60s";
 
   mostrarPalabras.style.display = "block";
+  document.querySelector(".entrada-info").style.display = "flex";
   document.getElementById("resultadoJuego").style.display = "none";
+  puntuacion.style.display = "none";
 
   generarPalabras();
   resaltarPalabra(0);
 
   juegoEnCurso = false;
+  campoEntrada.focus();
 }
 
 function iniciarJuego() {
@@ -295,6 +296,7 @@ function terminarJuego() {
   const total = puntos + errores;
 
   mostrarPalabras.style.display = "none";
+  document.querySelector(".entrada-info").style.display = "none";
 
   const resultadoDiv = document.getElementById("resultadoJuego");
   resultadoDiv.style.display = "block";
@@ -302,6 +304,8 @@ function terminarJuego() {
   document.getElementById("resultadoPuntos").textContent = puntos;
   document.getElementById("resultadoErrores").textContent = errores;
   document.getElementById("resultadoTotal").textContent = total;
+
+  puntuacion.style.display = "block";
 }
 
 campoEntrada.addEventListener("keydown", function (evento) {

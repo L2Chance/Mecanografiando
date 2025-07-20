@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 body {
   font-family: sans-serif;
@@ -11,6 +11,15 @@ body {
   margin: 0;
 }
 
+.contenedor-general {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .contenedor-juego {
   display: flex;
   justify-content: center;
@@ -18,12 +27,9 @@ body {
   flex-direction: column;
   text-align: center;
   width: 1200px;
-  height: 600px;
-  padding: 20px;
-  background-color: #2d2d2d;
+  height: 350px;
+  background-color: #1e1e1e;
   border-radius: 10px;
-  border: 2px solid rgb(233, 233, 233);
-  box-shadow: 0 0 0 10px #23500f, 0 0 0 20px #13ff46;
 }
 
 .juego {
@@ -37,14 +43,22 @@ body {
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   font-size: 1.5rem;
-  line-height: 2.2rem;
+  line-height: 3rem;
   text-align: justify;
   overflow-wrap: break-word;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-height: 200px;
+  max-height: 100px;
   overflow-y: auto;
   transition: background-color 0.3s ease;
-  font-family: "Fira Code", Consolas, "Courier New", monospace;
+  font-family: "Space Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.mostrar-palabras::-webkit-scrollbar {
+  display: none;
 }
 
 .entrada-info {
@@ -91,7 +105,13 @@ body {
 }
 
 .imagen-logo {
-  height: 180px;
+  height: 10rem;
+  transition: transform 0.7s ease;
+  cursor: pointer;
+}
+
+.imagen-logo:hover {
+  transform: scale(0.9);
 }
 
 button {
@@ -118,4 +138,75 @@ button:active {
   background-color: rgb(60, 220, 60);
   transform: scale(0.98);
   box-shadow: 0 3px 8px rgba(80, 245, 80, 0.3);
+}
+
+.resultado-juego {
+  margin-top: 30px;
+  padding: 2rem 2.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #1e1e1e;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  font-family: "Space Mono", monospace;
+  animation: aparecer 0.4s ease-out;
+}
+
+.resultado-juego h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4caf50;
+}
+
+.resultado-juego p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.resultado-juego span {
+  font-weight: bold;
+  color: #333;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mi-logo {
+  height: 3rem;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+#puntuacion {
+  display: none;
+  font-weight: bold;
+  color: #333;
+}
+
+#temporizador {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #174e2e;
+  background: #00ff2a;
+  padding: 6px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(91, 255, 70, 0.4);
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
