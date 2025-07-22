@@ -1,165 +1,15 @@
-const listaPalabras = [
-  "gato",
-  "perro",
-  "casa",
-  "auto",
-  "pelota",
-  "silla",
-  "ventana",
-  "fuego",
-  "tigre",
-  "teclado",
-  "pantalla",
-  "ratón",
-  "programa",
-  "nube",
-  "montaña",
-  "sol",
-  "luna",
-  "estrella",
-  "mar",
-  "río",
-  "bosque",
-  "tren",
-  "avión",
-  "libro",
-  "puerta",
-  "cielo",
-  "árbol",
-  "flor",
-  "agua",
-  "pájaro",
-  "nieve",
-  "ciudad",
-  "playa",
-  "camino",
-  "jardín",
-  "rueda",
-  "bote",
-  "coche",
-  "ratón",
-  "reloj",
-  "pluma",
-  "papel",
-  "mesa",
-  "lápiz",
-  "teléfono",
-  "lago",
-  "arena",
-  "montaña",
-  "isla",
-  "sol",
-  "viento",
-  "lluvia",
-  "nube",
-  "fuego",
-  "tierra",
-  "pez",
-  "animal",
-  "piedra",
-  "hierba",
-  "bosque",
-  "fresa",
-  "manzana",
-  "uva",
-  "perro",
-  "gato",
-  "caballo",
-  "vaca",
-  "oveja",
-  "cerdo",
-  "pollo",
-  "ratón",
-  "zorro",
-  "lobo",
-  "león",
-  "elefante",
-  "jirafa",
-  "mono",
-  "pájaro",
-  "mariposa",
-  "abeja",
-  "araña",
-  "serpiente",
-  "tiburón",
-  "ballena",
-  "delfín",
-  "pez",
-  "lagarto",
-  "rana",
-  "tortuga",
-  "cangrejo",
-  "estrella",
-  "luna",
-  "sol",
-  "planeta",
-  "galaxia",
-  "universo",
-  "estrella",
-  "cometa",
-  "meteorito",
-  "atmósfera",
-  "nube",
-  "lluvia",
-  "trueno",
-  "relámpago",
-  "tormenta",
-  "viento",
-  "huracán",
-  "tornado",
-  "volcán",
-  "terremoto",
-  "fuego",
-  "lava",
-  "humo",
-  "ceniza",
-  "roca",
-  "arena",
-  "barro",
-  "nieve",
-  "hielo",
-  "frío",
-  "calor",
-  "día",
-  "noche",
-  "mañana",
-  "tarde",
-  "hora",
-  "minuto",
-  "segundo",
-  "tiempo",
-  "espacio",
-  "luz",
-  "oscuridad",
-  "sombra",
-  "color",
-  "rojo",
-  "azul",
-  "verde",
-  "amarillo",
-  "naranja",
-  "morado",
-  "rosa",
-  "blanco",
-  "negro",
-  "gris",
-  "marrón",
-  "plata",
-  "oro",
-  "estudiante",
-  "foto",
-];
+import listaPalabras from "./recursos/palabras.js";
 
 const mostrarPalabras = document.getElementById("mostrarPalabras");
 const campoEntrada = document.getElementById("campoEntrada");
 const temporizador = document.getElementById("temporizador");
 const puntuacion = document.getElementById("puntuacion");
-const botonReiniciar = document.getElementById("botonReiniciar");
+const botonesReiniciar = document.querySelectorAll(".boton-reiniciar");
 
 let indiceActual = 0;
 let puntos = 0;
 let errores = 0;
-let tiempoRestante = 60;
+let tiempoRestante = 5;
 let intervalo = null;
 let juegoEnCurso = false;
 
@@ -174,11 +24,11 @@ function resetearJuego() {
   puntos = 0;
   errores = 0;
   indiceActual = 0;
-  tiempoRestante = 60;
+  tiempoRestante = 5;
   campoEntrada.disabled = false;
   campoEntrada.value = "";
   puntuacion.textContent = "Puntos: 0";
-  temporizador.textContent = "Tiempo: 60s";
+  temporizador.textContent = `Tiempo: ${tiempoRestante}s`;
 
   mostrarPalabras.style.display = "block";
   document.querySelector(".entrada-info").style.display = "flex";
@@ -225,7 +75,6 @@ function resaltarPalabra(indice) {
     span.classList.remove("actual");
     if (i === indice) {
       span.classList.add("actual");
-
       span.scrollIntoView({
         behavior: "smooth",
         block: "center",
@@ -315,6 +164,8 @@ campoEntrada.addEventListener("keydown", function (evento) {
   }
 });
 
-botonReiniciar.addEventListener("click", () => {
-  resetearJuego();
+botonesReiniciar.forEach((boton) => {
+  boton.addEventListener("click", () => {
+    resetearJuego();
+  });
 });

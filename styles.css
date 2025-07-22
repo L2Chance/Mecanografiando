@@ -4,9 +4,6 @@ body {
   font-family: sans-serif;
   background-color: #1e1e1e;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   margin: 0;
 }
@@ -111,7 +108,7 @@ body {
 }
 
 .imagen-logo:hover {
-  transform: scale(0.9);
+  transform: scale(0.9) rotate(-5deg);
 }
 
 button {
@@ -209,4 +206,15 @@ button:active {
   text-align: center;
   user-select: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 15%;
+  padding-left: 1em;
+}
+
+.navbar img {
+  height: 3rem;
 }
