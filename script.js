@@ -88,9 +88,9 @@ function resaltarPalabra(indice) {
 }
 
 campoEntrada.addEventListener("input", () => {
-  const entrada = campoEntrada.value.trim();
+  const entrada = campoEntrada.value;
 
-  if (!juegoEnCurso && entrada.length > 0) {
+  if (!juegoEnCurso && entrada.trim().length > 0) {
     iniciarJuego();
   }
 
@@ -100,10 +100,14 @@ campoEntrada.addEventListener("input", () => {
 
   if (spanActual.classList.contains("evaluada")) return;
 
-  if (palabraActual.startsWith(entrada)) {
+  if (palabraActual.startsWith(entrada.trim())) {
     spanActual.classList.remove("incorrecta");
   } else {
     spanActual.classList.add("incorrecta");
+  }
+
+  if (entrada.endsWith(" ")) {
+    verificarEntrada();
   }
 });
 
