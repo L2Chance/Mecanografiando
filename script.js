@@ -9,7 +9,8 @@ const botonesReiniciar = document.querySelectorAll(".boton-reiniciar");
 let indiceActual = 0;
 let puntos = 0;
 let errores = 0;
-let tiempoRestante = 5;
+let caracteresCorrectos = 0;
+let tiempoRestante = 60;
 let intervalo = null;
 let juegoEnCurso = false;
 
@@ -23,12 +24,13 @@ function resetearJuego() {
   clearInterval(intervalo);
   puntos = 0;
   errores = 0;
+  caracteresCorrectos = 0;
   indiceActual = 0;
-  tiempoRestante = 5;
+  tiempoRestante = 60;
   campoEntrada.disabled = false;
   campoEntrada.value = "";
   puntuacion.textContent = "Puntos: 0";
-  temporizador.textContent = `Tiempo: ${tiempoRestante}s`;
+  temporizador.textContent = `${tiempoRestante}s`;
 
   mostrarPalabras.style.display = "block";
   document.querySelector(".entrada-info").style.display = "flex";
@@ -45,7 +47,7 @@ function resetearJuego() {
 function iniciarJuego() {
   intervalo = setInterval(() => {
     tiempoRestante--;
-    temporizador.textContent = `Tiempo: ${tiempoRestante}s`;
+    temporizador.textContent = `${tiempoRestante}s`;
 
     if (tiempoRestante <= 0) {
       terminarJuego();
@@ -115,6 +117,7 @@ function verificarEntrada() {
   if (entrada === palabraActual) {
     spanActual.classList.add("correcta");
     puntos++;
+    caracteresCorrectos += palabraActual.length;
     puntuacion.textContent = `Puntos: ${puntos}`;
   } else {
     spanActual.classList.add("incorrecta");
@@ -137,6 +140,12 @@ function verificarEntrada() {
   }
 }
 
+function calcularWPM() {
+  const minutos = 60 / 60;
+  const palabrasPorMinuto = Math.round(caracteresCorrectos / 5 / minutos);
+  return palabrasPorMinuto;
+}
+
 function terminarJuego() {
   clearInterval(intervalo);
   campoEntrada.disabled = true;
@@ -154,13 +163,24 @@ function terminarJuego() {
   document.getElementById("resultadoErrores").textContent = errores;
   document.getElementById("resultadoTotal").textContent = total;
 
+  const wpm = calcularWPM();
+  document.getElementById("resultadoWPM").textContent = wpm;
+
   puntuacion.style.display = "block";
 }
 
 campoEntrada.addEventListener("keydown", function (evento) {
-  if (evento.key === " " || evento.key === "Enter") {
+  if (
+    (evento.key === " " || evento.key === "Enter") &&
+    campoEntrada.value.trim() !== ""
+  ) {
     evento.preventDefault();
     verificarEntrada();
+  } else if (
+    (evento.key === " " || evento.key === "Enter") &&
+    campoEntrada.value.trim() === ""
+  ) {
+    evento.preventDefault();
   }
 });
 
@@ -181,7 +201,7 @@ function toggleModo() {
     botonModo.textContent = "🌙";
   } else {
     localStorage.setItem("modo", "claro");
-    botonModo.textContent = "🌞";
+    botonModo.textContent = "☀️";
   }
 }
 
@@ -192,7 +212,7 @@ function cargarModo() {
     botonModo.textContent = "🌙";
   } else {
     document.body.classList.add("modo-claro");
-    botonModo.textContent = "🌞";
+    botonModo.textContent = "☀️";
   }
 }
 

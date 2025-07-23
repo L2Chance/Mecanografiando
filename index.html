@@ -8,7 +8,7 @@
   </head>
   <body>
     <button id="botonModo" aria-label="Cambiar modo claro/oscuro">
-      🌞 / 🌙
+      ☀️ / 🌙
     </button>
     <div class="contenedor-general">
       <img
@@ -22,7 +22,7 @@
           <div class="entrada-info">
             <input type="text" id="campoEntrada" autocomplete="off" autofocus />
             <div class="info">
-              <span id="temporizador">Tiempo: 60s</span>
+              <span id="temporizador">60s</span>
               <span id="puntuacion">Puntos: 0</span>
             </div>
             <button class="boton-reiniciar">↻</button>
@@ -31,6 +31,7 @@
 
         <div class="resultado-juego" id="resultadoJuego" style="display: none">
           <h2>¡Tiempo terminado!</h2>
+          <p>Palabras por minuto: <span id="resultadoWPM">0</span></p>
           <p>Puntuación: <span id="resultadoPuntos">0</span></p>
           <p>Errores: <span id="resultadoErrores">0</span></p>
           <p>Total intentadas: <span id="resultadoTotal">0</span></p>

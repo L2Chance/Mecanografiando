@@ -64,7 +64,7 @@ body {
   line-height: 3rem;
   text-align: justify;
   overflow-wrap: break-word;
-  max-height: 95px;
+  max-height: 97px;
   overflow-y: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   font-family: "Space Mono", monospace;
@@ -119,7 +119,7 @@ body {
 }
 
 .imagen-logo:hover {
-  transform: scale(0.9) rotate(-5deg);
+  transform: scale(0.9) rotate(2deg);
 }
 
 button {
@@ -154,7 +154,6 @@ button:active {
   right: 15px;
   font-size: 1.5rem;
   padding: 6px 12px;
-  border: 2px solid #4caf50;
   border-radius: 8px;
   background: transparent;
   color: #4caf50;
@@ -164,7 +163,7 @@ button:active {
 }
 
 #botonModo:hover {
-  background-color: #4caf50;
+  background-color: #b6ffaf;
   color: #fff;
 }
 
@@ -226,17 +225,20 @@ button:active {
 
 #temporizador {
   font-size: 1.5rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 700;
   color: #ffffff;
   background: #353535;
-  border: solid black 1px;
   padding: 6px 14px;
   border-radius: 12px;
-  display: inline-block;
   min-width: 100px;
   text-align: center;
   user-select: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
