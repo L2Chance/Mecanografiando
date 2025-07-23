@@ -10,7 +10,7 @@ let indiceActual = 0;
 let puntos = 0;
 let errores = 0;
 let caracteresCorrectos = 0;
-let tiempoRestante = 5;
+let tiempoRestante = 60;
 let intervalo = null;
 let juegoEnCurso = false;
 
@@ -26,7 +26,7 @@ function resetearJuego() {
   errores = 0;
   caracteresCorrectos = 0;
   indiceActual = 0;
-  tiempoRestante = 5;
+  tiempoRestante = 60;
   campoEntrada.disabled = false;
   campoEntrada.value = "";
   puntuacion.textContent = "Puntos: 0";
