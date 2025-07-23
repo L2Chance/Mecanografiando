@@ -1,5 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
+body,
+.contenedor-general,
+.contenedor-juego,
+.mostrar-palabras,
+button,
+.resultado-juego,
+#temporizador {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* =================== */
+/*      ESTILO BASE    */
+/* =================== */
+
 body {
   font-family: sans-serif;
   background-color: #1e1e1e;
@@ -25,37 +39,11 @@ body {
   text-align: center;
   width: 1200px;
   height: 350px;
-  background-color: #1e1e1e;
   border-radius: 10px;
 }
 
 .juego {
   max-width: 900px;
-}
-
-.mostrar-palabras {
-  background-color: #f0f0f0;
-  margin: 20px 0;
-  color: #1e1e1e;
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  font-size: 1.5rem;
-  line-height: 3rem;
-  text-align: justify;
-  overflow-wrap: break-word;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-height: 100px;
-  overflow-y: auto;
-  transition: background-color 0.3s ease;
-  font-family: "Space Mono", monospace;
-  font-weight: 500;
-  font-style: normal;
-
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.mostrar-palabras::-webkit-scrollbar {
-  display: none;
 }
 
 .entrada-info {
@@ -64,6 +52,29 @@ body {
   align-items: center;
   width: 100%;
   gap: 20px;
+}
+
+.mostrar-palabras {
+  background-color: #f0f0f0;
+  color: #1e1e1e;
+  margin: 20px 0;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  text-align: justify;
+  overflow-wrap: break-word;
+  max-height: 95px;
+  overflow-y: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Space Mono", monospace;
+  font-weight: 500;
+  font-style: normal;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.mostrar-palabras::-webkit-scrollbar {
+  display: none;
 }
 
 .mostrar-palabras span {
@@ -90,9 +101,9 @@ body {
   width: 100%;
   border: none;
   border-radius: 8px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
   background-color: #3a3a3a;
   color: #fff;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .info {
@@ -103,8 +114,8 @@ body {
 
 .imagen-logo {
   height: 10rem;
-  transition: transform 0.7s ease;
   cursor: pointer;
+  transition: transform 0.7s ease;
 }
 
 .imagen-logo:hover {
@@ -113,13 +124,13 @@ body {
 
 button {
   padding: 12px 28px;
-  background-color: rgb(80, 245, 80);
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: bold;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  background-color: rgb(80, 245, 80);
+  color: #ffffff;
   box-shadow: 0 4px 12px rgba(80, 245, 80, 0.4);
   transition: background-color 0.3s ease, transform 0.2s ease,
     box-shadow 0.3s ease;
@@ -135,6 +146,26 @@ button:active {
   background-color: rgb(60, 220, 60);
   transform: scale(0.98);
   box-shadow: 0 3px 8px rgba(80, 245, 80, 0.3);
+}
+
+#botonModo {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  padding: 6px 12px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background: transparent;
+  color: #4caf50;
+  cursor: pointer;
+  z-index: 1100;
+  user-select: none;
+}
+
+#botonModo:hover {
+  background-color: #4caf50;
+  color: #fff;
 }
 
 .resultado-juego {
@@ -196,11 +227,11 @@ button:active {
 #temporizador {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #174e2e;
-  background: #00ff2a;
+  color: #ffffff;
+  background: #353535;
+  border: solid black 1px;
   padding: 6px 14px;
   border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(91, 255, 70, 0.4);
   display: inline-block;
   min-width: 100px;
   text-align: center;
@@ -217,4 +248,80 @@ button:active {
 
 .navbar img {
   height: 3rem;
+}
+
+/* ========================= */
+/*        MODO CLARO         */
+/* ========================= */
+
+.modo-claro {
+  background: #c9d6ff;
+  background: -webkit-linear-gradient(to right, #e2e2e2, #c9d6ff);
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+
+  color: #1e1e1e;
+}
+
+.modo-claro .contenedor-juego {
+  color: #1e1e1e;
+}
+
+.modo-claro .mostrar-palabras {
+  background-color: #e0e0e0;
+  color: #222;
+}
+
+.modo-claro #campoEntrada {
+  background-color: #d8d8d8;
+}
+
+.modo-claro button {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.modo-claro button:hover {
+  background-color: #45a045;
+  box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6);
+}
+
+.modo-claro #temporizador {
+  color: #000000;
+  background: #457fca;
+  background: -webkit-linear-gradient(to right, #5691c8, #457fca);
+  background: linear-gradient(to right, #5691c8, #457fca);
+}
+
+.modo-claro .resultado-juego {
+  background-color: #f9f9f9;
+  color: #1e1e1e;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================= */
+/*        MODO OSCURO        */
+/* ========================= */
+
+body.modo-oscuro {
+  background: #232526; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #414345,
+    #232526
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #414345,
+    #232526
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+body.modo-oscuro .contenedor-juego {
+  color: #fff;
+}
+
+body.modo-oscuro #mostrarPalabras {
+  color: white;
+  background-color: #333;
 }

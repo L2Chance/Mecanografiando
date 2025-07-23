@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <button id="botonModo" aria-label="Cambiar modo claro/oscuro">
+      🌞 / 🌙
+    </button>
     <div class="contenedor-general">
       <img
         class="imagen-logo"
@@ -17,13 +20,7 @@
         <div class="juego">
           <div class="mostrar-palabras" id="mostrarPalabras"></div>
           <div class="entrada-info">
-            <input
-              type="text"
-              id="campoEntrada"
-              placeholder="Escribí aquí..."
-              autocomplete="off"
-              autofocus
-            />
+            <input type="text" id="campoEntrada" autocomplete="off" autofocus />
             <div class="info">
               <span id="temporizador">Tiempo: 60s</span>
               <span id="puntuacion">Puntos: 0</span>

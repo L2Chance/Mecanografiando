@@ -169,3 +169,32 @@ botonesReiniciar.forEach((boton) => {
     resetearJuego();
   });
 });
+
+const botonModo = document.getElementById("botonModo");
+
+function toggleModo() {
+  document.body.classList.toggle("modo-oscuro");
+  document.body.classList.toggle("modo-claro");
+
+  if (document.body.classList.contains("modo-oscuro")) {
+    localStorage.setItem("modo", "oscuro");
+    botonModo.textContent = "🌙";
+  } else {
+    localStorage.setItem("modo", "claro");
+    botonModo.textContent = "🌞";
+  }
+}
+
+function cargarModo() {
+  const modoGuardado = localStorage.getItem("modo");
+  if (modoGuardado === "oscuro") {
+    document.body.classList.add("modo-oscuro");
+    botonModo.textContent = "🌙";
+  } else {
+    document.body.classList.add("modo-claro");
+    botonModo.textContent = "🌞";
+  }
+}
+
+botonModo.addEventListener("click", toggleModo);
+cargarModo();
