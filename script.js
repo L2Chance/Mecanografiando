@@ -10,7 +10,7 @@ let indiceActual = 0;
 let puntos = 0;
 let errores = 0;
 let caracteresCorrectos = 0;
-let tiempoRestante = 60;
+let tiempoRestante = 5;
 let intervalo = null;
 let juegoEnCurso = false;
 
@@ -26,7 +26,7 @@ function resetearJuego() {
   errores = 0;
   caracteresCorrectos = 0;
   indiceActual = 0;
-  tiempoRestante = 60;
+  tiempoRestante = 5;
   campoEntrada.disabled = false;
   campoEntrada.value = "";
   puntuacion.textContent = "Puntos: 0";
@@ -36,6 +36,7 @@ function resetearJuego() {
   document.querySelector(".entrada-info").style.display = "flex";
   document.getElementById("resultadoJuego").style.display = "none";
   puntuacion.style.display = "none";
+  document.querySelector(".imagen-logo").style.display = "block";
 
   generarPalabras();
   resaltarPalabra(0);
@@ -166,7 +167,22 @@ function terminarJuego() {
   const wpm = calcularWPM();
   document.getElementById("resultadoWPM").textContent = wpm;
 
+  const gif = document.getElementById("gifResultado");
+
+  if (wpm < 20) {
+    gif.src = "./assets/run-5.gif";
+  } else if (wpm < 40) {
+    gif.src = "./assets/run-4.gif";
+  } else if (wpm < 60) {
+    gif.src = "./assets/run-3.gif";
+  } else if (wpm < 80) {
+    gif.src = "./assets/run-2.gif";
+  } else {
+    gif.src = "./assets/run-1.gif";
+  }
+
   puntuacion.style.display = "block";
+  document.querySelector(".imagen-logo").style.display = "none";
 }
 
 campoEntrada.addEventListener("keydown", function (evento) {
@@ -192,28 +208,42 @@ botonesReiniciar.forEach((boton) => {
 
 const botonModo = document.getElementById("botonModo");
 
+const githubLogo = document.getElementById("githubLogo");
+
+function actualizarLogoGitHub() {
+  if (document.body.classList.contains("modo-oscuro")) {
+    githubLogo.src = "assets/github/github-mark/github-mark-white.png";
+  } else {
+    githubLogo.src = "assets/github/github-mark/github-mark.png";
+  }
+}
+
 function toggleModo() {
   document.body.classList.toggle("modo-oscuro");
   document.body.classList.toggle("modo-claro");
 
   if (document.body.classList.contains("modo-oscuro")) {
     localStorage.setItem("modo", "oscuro");
-    botonModo.textContent = "🌙";
+    botonModo.textContent = "🌕";
   } else {
     localStorage.setItem("modo", "claro");
     botonModo.textContent = "☀️";
   }
+
+  actualizarLogoGitHub();
 }
 
 function cargarModo() {
   const modoGuardado = localStorage.getItem("modo");
   if (modoGuardado === "oscuro") {
     document.body.classList.add("modo-oscuro");
-    botonModo.textContent = "🌙";
+    botonModo.textContent = "🌕";
   } else {
     document.body.classList.add("modo-claro");
     botonModo.textContent = "☀️";
   }
+
+  actualizarLogoGitHub();
 }
 
 botonModo.addEventListener("click", toggleModo);

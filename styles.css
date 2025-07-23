@@ -152,18 +152,17 @@ button:active {
   position: fixed;
   top: 15px;
   right: 15px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 6px 12px;
   border-radius: 8px;
   background: transparent;
-  color: #4caf50;
   cursor: pointer;
   z-index: 1100;
   user-select: none;
+  box-shadow: none;
 }
 
 #botonModo:hover {
-  background-color: #b6ffaf;
   color: #fff;
 }
 
@@ -326,4 +325,12 @@ body.modo-oscuro .contenedor-juego {
 body.modo-oscuro #mostrarPalabras {
   color: white;
   background-color: #333;
+}
+
+.gif-resultado {
+  width: 200px;
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
