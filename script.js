@@ -173,16 +173,36 @@ function terminarJuego() {
 
   const gif = document.getElementById("gifResultado");
 
-  if (wpm < 20) {
-    gif.src = "./assets/run-5.gif";
+  if (wpm < 10) {
+    gif.src = "./assets/run-10.gif";
+  } else if (wpm < 20) {
+    gif.src = "./assets/run-20.gif";
+  } else if (wpm < 30) {
+    gif.src = "./assets/run-30.gif";
   } else if (wpm < 40) {
-    gif.src = "./assets/run-4.gif";
+    gif.src = "./assets/run-40.gif";
+  } else if (wpm < 50) {
+    gif.src = "./assets/run-50.gif";
   } else if (wpm < 60) {
-    gif.src = "./assets/run-3.gif";
+    gif.src = "./assets/run-60.gif";
+  } else if (wpm < 70) {
+    gif.src = "./assets/run-70.gif";
   } else if (wpm < 80) {
-    gif.src = "./assets/run-2.gif";
+    gif.src = "./assets/run-80.gif";
+  } else if (wpm < 90) {
+    gif.src = "./assets/run-90.gif";
+  } else if (wpm < 100) {
+    gif.src = "./assets/run-100.gif";
+  } else if (wpm < 110) {
+    gif.src = "./assets/run-110.gif";
+  } else if (wpm < 120) {
+    gif.src = "./assets/run-120.gif";
+  } else if (wpm < 130) {
+    gif.src = "./assets/run-130.gif";
+  } else if (wpm < 140) {
+    gif.src = "./assets/run-140.gif";
   } else {
-    gif.src = "./assets/run-1.gif";
+    gif.src = "./assets/run-150.gif";
   }
 
   puntuacion.style.display = "block";
